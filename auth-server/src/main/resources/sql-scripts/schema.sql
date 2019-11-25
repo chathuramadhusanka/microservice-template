@@ -1,3 +1,4 @@
+drop table if exists app_role;
 CREATE TABLE app_role (
   id bigint(20) NOT NULL AUTO_INCREMENT,
   description varchar(255) DEFAULT NULL,
@@ -5,6 +6,7 @@ CREATE TABLE app_role (
   PRIMARY KEY (id)
 );
 
+drop table if exists app_user;
 CREATE TABLE app_user (
   id bigint(20) NOT NULL AUTO_INCREMENT,
   first_name varchar(255) NOT NULL,
@@ -14,6 +16,7 @@ CREATE TABLE app_user (
   PRIMARY KEY (id)
 );
 
+drop table if exists user_role;
 CREATE TABLE user_role (
   user_id bigint(20) NOT NULL,
   role_id bigint(20) NOT NULL,
