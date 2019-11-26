@@ -1,14 +1,19 @@
 package lk.microservices.microservice.one.bussiness.controller;
 
 import lk.microservices.microservice.one.bussiness.model.dto.PatientDto;
+import lk.microservices.microservice.one.bussiness.model.entity.PatientEntity;
+import lk.microservices.microservice.one.bussiness.model.mapper.PatientMapper;
 import lk.microservices.microservice.one.bussiness.service.PatientService;
 import lk.microservices.microservice.one.technical.exception.RestValidationException;
 import lk.microservices.microservice.one.technical.model.ApiResponse;
+import lk.microservices.microservice.one.technical.model.HttpApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static lk.microservices.microservice.one.technical.util.CommonWebUtil.httpApiResponse;
 
 //@CrossOrigin
 @RestController
@@ -23,6 +28,14 @@ public class PatientRestController {
 
     public PatientRestController(PatientService patientService) {
         this.patientService = patientService;
+    }
+
+    @GetMapping("/getuser")
+    public HttpEntity<ApiResponse> getPatient() {
+        PatientEntity patientEntity = new PatientEntity();
+        patientEntity.setName("Arun");
+        patientEntity.setEmailAddress("arunt@gmail.com");
+        return httpApiResponse(new HttpApiResponse(patientEntity));
     }
 
     @PostMapping("/create")
